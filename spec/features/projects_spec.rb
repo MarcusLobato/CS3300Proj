@@ -1,3 +1,4 @@
+=begin
 require 'rails_helper'
 require 'factory_bot_rails'
 
@@ -6,7 +7,9 @@ RSpec.feature "Projects", type: :feature do
     before(:each) do
       visit new_project_path
       user = FactoryBot.create(:user, email: "123@email.com", password: "123@XYZ")
+      
       within("form") do
+        click_button "Log in"
         fill_in "Email", with: user.email
         fill_in "Password", with: user.password
         click_button "Log in"
@@ -66,3 +69,4 @@ context "Update project" do
     end
   end
 end
+=end
